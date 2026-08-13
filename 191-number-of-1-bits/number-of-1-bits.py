@@ -1,12 +1,16 @@
 class Solution(object):
     def hammingWeight(self, n):
-        binary = (bin(n)[2:])
         count = 0
 
-        for i in binary:
-            if i == '1':
+        current = n
+
+        while (current > 0):
+            rem = current % 2
+            current = current // 2
+
+            if rem == 1:
                 count += 1
 
-        return count
-        
+
+        return (count)
         
