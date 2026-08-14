@@ -7,8 +7,6 @@ class Solution(object):
             return nums[l]
 
         while (l < r):
-
-
             if nums[l] < nums[r]:
                 short = nums[l]
                 r -= 1
