@@ -1,17 +1,23 @@
 class Solution(object):
     def findMin(self, nums):
-        short = float('-inf')
+        shortest = float('-inf')
         l, r = 0, len(nums) -1
 
         if l == r:
             return nums[l]
 
-        while (l < r):
+        while l < r:
             if nums[l] < nums[r]:
-                short = nums[l]
+                shortest = nums[l]
                 r -= 1
             else:
-                short = nums[r]
+                shortest = nums[r]
                 l += 1
-        return short
+
+            
+        return shortest
+
+        
+
+        
         
