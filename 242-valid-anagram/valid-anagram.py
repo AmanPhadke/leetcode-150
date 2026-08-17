@@ -1,15 +1,20 @@
 class Solution(object):
     def isAnagram(self, s, t):
-        if len(s) == len(t):
-            for letter in t:
-                if (letter in s):
-                    if t.count(letter) == s.count(letter):
-                        continue
-                    else:
-                        return False
-                else:
-                    return False
-        else:
+        seen_s = set()
+        seen_t = set()
+        count_s = 0
+        count_t = 0
+
+        if len(s) != len(t):
             return False
 
+        for letter in set(s):
+            if s.count(letter) != t.count(letter):
+                return False
+        
         return True
+
+        
+
+
+        
