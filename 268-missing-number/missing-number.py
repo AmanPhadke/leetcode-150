@@ -1,6 +1,9 @@
 class Solution(object):
     def missingNumber(self, nums):
-        for i in range(min(min(nums),0), max(len(nums)+1, max(nums))):
-            if i not in nums:
+        nums_set = set(nums)
+        maxi = max(nums_set) + 1
+        for i in range(maxi):
+            if i not in nums_set:
                 return i
-        
+
+        return maxi
