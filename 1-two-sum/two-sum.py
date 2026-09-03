@@ -1,23 +1,6 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        HashMap = {}
-        arr = []
-        for i in range(0, len(nums)):
-            
+        for i in range(len(nums)):
             diff = target - nums[i]
-
-            if diff in HashMap:
-                arr.append(HashMap[diff])
-                arr.append(i)
-                break
-            
-            HashMap[nums[i]] = i
-
-
-        return (arr)
-
-            
-
-
-
-        
+            if (diff in nums) and (nums.index(diff) != i):
+                return [i, nums.index(diff)]
