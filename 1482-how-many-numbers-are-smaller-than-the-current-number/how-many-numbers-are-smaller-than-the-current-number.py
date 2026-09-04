@@ -1,15 +1,16 @@
 class Solution(object):
     def smallerNumbersThanCurrent(self, nums):
-        count = 0
         res = []
+        sorted_nums = sorted(nums)
+        hashNums = {}
+
+        for i in range(len(sorted_nums)):
+            if sorted_nums[i] not in hashNums:
+                hashNums[sorted_nums[i]] = i
+
 
         for num in nums:
-            for s in nums:
-                if s < num:
-                    count += 1
-            
-            res.append(count)
-            count = 0
+            res.append(hashNums[num])
+
 
         return res
-        
