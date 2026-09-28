@@ -12,12 +12,10 @@ class Solution(object):
 
         l, r = 0, len(arr) - 1
 
-        rev = reverse(l, r)
+        reverse(l, r)
 
         l, r = 0, d - 1
-        first_rev = reverse(l, r)
+        reverse(l, r)
 
         l, r = d, len(arr) - 1
-        second_rev = reverse(l, r)
-
-        return second_rev
+        reverse(l, r)
