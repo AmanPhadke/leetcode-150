@@ -1,21 +1,23 @@
 class Solution(object):
-    def rotate(self, arr, d):
-
-        d = d % len(arr)
+    def rotate(self, nums, k):
+        k = k % len(nums)
 
         def reverse(l, r):
             while l < r:
-                arr[l] , arr[r] = arr[r] , arr[l]
-                l, r = l + 1, r - 1
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r -= 1
 
-            return arr
+            return nums
 
-        l, r = 0, len(arr) - 1
+        #reversing the whole list
+        reverse(0, len(nums) - 1)
 
-        reverse(l, r)
 
-        l, r = 0, d - 1
-        reverse(l, r)
+        #reversing left section
+        reverse(0, k - 1)
 
-        l, r = d, len(arr) - 1
-        reverse(l, r)
+        #reversing right section
+        reverse(k, len(nums)-1)
+
+
