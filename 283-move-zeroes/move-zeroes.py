@@ -1,16 +1,10 @@
 class Solution(object):
-    def moveZeroes(self, arr):
-        zero = 0
-        temp = []
+    def moveZeroes(self, nums):
+        l = 0
 
-        for i in range(len(arr)):
-            if arr[i] != 0:
-                temp.append(arr[i])
+        for r in range(len(nums)):
+            if nums[r] != 0:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+    
             
-            else:
-                zero += 1
-
-        arr[:] = temp + [0]*zero
-            
-        return arr
-        
