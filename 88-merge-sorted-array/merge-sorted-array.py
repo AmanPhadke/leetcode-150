@@ -1,21 +1,14 @@
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
-        res = []
-        i, j = 0, 0
+        temp = []
+        for i in range(m):
+            temp.append(nums1[i])
 
-        for num in nums1:
-            if i < m:
-                res.append(num)
-                i += 1
-            else:
-                break
+        for j in range(n):
+            temp.append(nums2[j])
 
-        for num in nums2:
-            if j < n:
-                res.append(num)
-                j += 1
-            else:
-                break
+        nums1[:] = sorted(temp)
 
-        nums1[:] = sorted(res)
-            
+        
+
+        
