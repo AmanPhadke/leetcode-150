@@ -1,23 +1,16 @@
 class Solution(object):
     def canConstruct(self, ransomNote, magazine):
-        l = set(ransomNote)
-        for letter in l:
-            if ransomNote.count(letter) > magazine.count(letter):
+        count_ransom = {}
+
+        for char in magazine:
+            count_ransom[char] = count_ransom.get(char, 0) + 1
+
+
+        for char in ransomNote:
+            if char not in count_ransom:
                 return False
+            
+            elif count_ransom[char] < ransomNote.count(char):
+                return False
+
         return True
-
-        # hashMap = {}
-
-        # for letter in magazine:
-        #     hashMap[letter] = magazine.count(letter)
-
-
-        # for letter in ransomNote:
-        #     if letter not in hashMap:
-        #         return False
-        #     elif hashMap[letter] == 0:
-        #         return False
-        #     else:
-        #         hashMap[letter] = hashMap[letter] - 1
-
-        # return True
