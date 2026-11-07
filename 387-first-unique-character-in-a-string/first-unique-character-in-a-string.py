@@ -1,10 +1,17 @@
 class Solution(object):
     def firstUniqChar(self, s):
-        seen = set()
-        for i in range(len(s)):
-            if s[i] not in seen:
-                if s.count(s[i]) < 2:
-                    return i
-                seen.add(s[i])
+        count = {}
+
+        for char in s:
+            count[char] = count.get(char, 0) + 1
+
+        for i, c in enumerate(s):
+            if count[c] == 1:
+                return i
 
         return -1
+        
+
+
+
+        
