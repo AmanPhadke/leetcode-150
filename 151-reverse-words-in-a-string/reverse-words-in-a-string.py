@@ -1,15 +1,22 @@
 class Solution(object):
     def reverseWords(self, s):
-        s = s.strip()
+        l = 0
+        sentence = ''
 
-        words = s.split()
+        s = s[::-1]
 
-        l, r = 0, len(words) - 1
+        while l < len(s):
+            word = ''
+            while (l < len(s)) and (s[l] != ' '):
+                word += s[l]
+                l += 1
+            
+            if len(word) > 0:
+                word = word[::-1]
+                sentence += ' ' + word
+            
 
-        while l < r:
-            words[l], words[r] = words[r], words[l]
             
             l += 1
-            r -= 1
 
-        return ' '.join(words)
+        return sentence[1:]
