@@ -24,7 +24,7 @@ class Solution(object):
                 l += 1
                 r -= 1
 
-        return ''.join(char for char in sl)
+        return ''.join(sl)
 
             
         
