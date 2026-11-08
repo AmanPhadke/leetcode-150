@@ -1,25 +1,24 @@
 class Solution(object):
-    def wordPattern(self, t, s):
-        hashMap = {}
-        rev = {}
+    def wordPattern(self, pattern, s):
+        s_list = s.split()
 
-        words = s.split(' ')
-
-
-        if len(words) != len(t):
+        if len(pattern) != len(s_list):
             return False
 
-        for i in range(0, len(words)):
-            
-            if words[i] in hashMap:
-                if hashMap[words[i]] != t[i]:
-                    return False
+        charMap = {}
 
-            else:
-                if t[i] in rev:
-                    return False
+        for i in range(len(pattern)):
+            if pattern[i] not in charMap and s_list[i] not in charMap.values():
+                charMap[pattern[i]] = s_list[i]
 
-            hashMap[words[i]] = t[i]
-            rev[t[i]] = words[i]
+        if not all(char in charMap for char in pattern):
+            return False
+
+        string = ' '.join(charMap[char] for char in pattern)
+
+        if string != s:
+            return False
 
         return True
+
+        print(string)
