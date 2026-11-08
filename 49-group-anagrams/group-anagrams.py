@@ -1,14 +1,14 @@
 class Solution(object):
     def groupAnagrams(self, strs):
-        sub = {}
+        res = []
+        group = {}
 
-        for string in strs:
-            key = ''.join(sorted(string))
+        for word in strs:
+            word_set = tuple(sorted(word))
+            group[word_set] = group.get(word_set, []) + [word]
 
-            if key not in sub:
-                sub[key] = []
 
-            sub[key].append(string)
+        for key, value in group.items():
+            res.append(value)
 
-        return list(sub.values())
-
+        return sorted(res)
