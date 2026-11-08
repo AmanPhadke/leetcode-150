@@ -1,19 +1,22 @@
 class Solution(object):
     def isIsomorphic(self, s, t):
-        hashMap = {}
-        revMap = {}
+        charMap = {}
         temp = ''
 
         for i in range(len(s)):
-            if (s[i] in hashMap):
-                if (hashMap[s[i]] != t[i]):
-                    return False
+            if s[i] not in charMap and t[i] not in charMap.values():
+                charMap[s[i]] = t[i]
 
-            else:
-                if t[i] in revMap:
-                    return False
+        for char in s:
+            if char not in charMap:
+                return False
+    
+            temp += charMap[char]
 
-            hashMap[s[i]] = t[i]
-            revMap[t[i]] = s[i]
+        print(temp, t)
+
+        if temp != t:
+            return False
 
         return True
+        
