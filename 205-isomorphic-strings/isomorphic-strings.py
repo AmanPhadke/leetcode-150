@@ -13,8 +13,6 @@ class Solution(object):
     
             temp += charMap[char]
 
-        print(temp, t)
-
         if temp != t:
             return False
 
