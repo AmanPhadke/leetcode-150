@@ -1,6 +1,6 @@
 class Solution(object):
     def numUniqueEmails(self, emails):
-        temp = []
+        temp = set()
         for email in emails:
             local, domain = email.split('@')
             local = local.replace('.' , '')
@@ -9,7 +9,7 @@ class Solution(object):
             
             email_rec = local + '@' + domain
             
-            if email_rec not in temp:
-                temp.append(email_rec)    
+            temp.add(email_rec)
+
         
         return len(temp)
