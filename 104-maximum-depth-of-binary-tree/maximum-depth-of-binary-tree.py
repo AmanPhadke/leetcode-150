@@ -6,13 +6,30 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
-        def max_depth(root):
-            if not root:
-                return 0
+        # def max_depth(root):
+        #     if not root:
+        #         return 0
 
-            return 1 + max(max_depth(root.left), max_depth(root.right))
+        #     return 1 + max(max_depth(root.left), max_depth(root.right))
 
-        return max_depth(root)
+        # return max_depth(root)
+        if not root:
+            return 0
+
+        stack = [(root, 1)]
+        maxDepth = 1
+
+        while stack:
+            curr, depth = stack.pop()
+            maxDepth = max(maxDepth, depth)
+
+            if curr.left:
+                stack.append((curr.left, depth + 1))
+
+            if curr.right:
+                stack.append((curr.right, depth + 1))
+
+        return maxDepth
 
 
 
