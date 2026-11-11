@@ -1,12 +1,11 @@
-# Write your MySQL query statement below
-WITH Prev_Temperature AS(
-    SELECT id,
-    temperature,
-    recordDate,
-        LAG(temperature, 1) OVER (ORDER BY recordDate) AS prev_temp,
-        LAG(recordDate, 1) OVER (ORDER BY recordDate) AS prev_date
+WITH LaggingLogs AS(
+    SELECT *,
+        LAG(temperature, 1) OVER (ORDER BY recordDate) as lagging,
+        LAG(recordDate, 1) OVER (ORDER BY recordDate) as dateLag
     FROM Weather
 )
+
 SELECT id
-FROM Prev_Temperature
-WHERE prev_temp < temperature AND DATEDIFF(recordDate, prev_date) = 1
+FROM LaggingLogs
+WHERE lagging < temperature
+AND DATEDIFF(recordDate, dateLag) = 1
