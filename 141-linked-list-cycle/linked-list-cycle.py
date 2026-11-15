@@ -6,16 +6,13 @@
 
 class Solution(object):
     def hasCycle(self, head):
-        current = head
+        curr = head
         seen = set()
 
-        while current is not None:
-            if current in seen:
-                return current
-            seen.add(current)
-            current = current.next
+        while curr:
+            if curr in seen:
+                return True
+            seen.add(curr)
 
-    
-
-            
-        
+            curr = curr.next
+        return False
