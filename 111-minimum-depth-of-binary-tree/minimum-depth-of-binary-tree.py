@@ -16,18 +16,18 @@ class Solution(object):
         level_count = 0
 
         while queue:
-            level = []
             level_count += 1
             
             for _ in range(len(queue)):
                 node = queue.popleft()
-                level.append(node.val)
+
+                if node.right:
+                    queue.append(node.right)
 
                 if node.left:
                     queue.append(node.left)
 
-                if node.right:
-                    queue.append(node.right)
+                
 
                 if not node.left and not node.right:
                     return level_count
